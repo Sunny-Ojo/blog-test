@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostCategorySubscriberController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index']);
 Route::resource('posts', PostController::class);
+Route::post('category', [CategoryController::class, 'store'])->name('category.store');
 Route::post('subscribe-to-newsletter', [PostCategorySubscriberController::class, 'subscribe'])->name('subscribe-to-newsletter');
 
 // Route::get('/', function () {

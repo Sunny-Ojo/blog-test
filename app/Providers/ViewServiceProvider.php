@@ -26,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-          return $view->with('postCategories', Category::get(['id', 'name']));
+          return $view->with('postCategories', Category::latest()->get(['id', 'name']));
         });
     }
 }

@@ -9,7 +9,11 @@
                     <h1>@yield('header-title', 'Blog Test')</h1>
                     <span class="subheading">@yield('header-subtitle',  'Simple Blog  subscription test')</span>
                 </div>
+                @if (Session::has('subscription-successful'))
+                <span class="text-warning  mt-5">{{Session::get('subscription-successful')}}</span>
+            @endif
             </div>
+
         </div>
     </div>
 </header>
@@ -17,6 +21,15 @@
 @section('content')
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+         @endif
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
